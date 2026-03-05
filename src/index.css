@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+@tailwind utilities;
+
+@theme {
+  --color-red-50: #fff0f0;
+  --color-red-100: #ffdddd;
+  --color-red-200: #ffc0c0;
+  --color-red-300: #ff9494;
+  --color-red-400: #ff5757;
+  --color-red-500: #ff2323;
+  --color-red-600: #ff0000;
+  --color-red-700: #d70000;
+  --color-red-800: #b10303;
+  --color-red-900: #920a0a;
+  --color-red-950: #500000;
+
+  --color-thunderbird-50: #fff0f0;
+  --color-thunderbird-100: #ffdddd;
+  --color-thunderbird-200: #ffc1c1;
+  --color-thunderbird-300: #ff9595;
+  --color-thunderbird-400: #ff5959;
+  --color-thunderbird-500: #ff2626;
+  --color-thunderbird-600: #fc0606;
+  --color-thunderbird-700: #cc0000;
+  --color-thunderbird-800: #af0505;
+  --color-thunderbird-900: #900c0c;
+  --color-thunderbird-950: #500000;
+
+  --color-iron-50: #fafafa;
+  --color-iron-100: #f5f5f5;
+  --color-iron-200: #e6e6e6;
+  --color-iron-300: #cccccc;
+  --color-iron-400: #a3a3a3;
+  --color-iron-500: #727272;
+  --color-iron-600: #535353;
+  --color-iron-700: #404040;
+  --color-iron-800: #272727;
+  --color-iron-900: #1a1a1a;
+  --color-iron-950: #0b0b0b;
+
+  --color-cerulean-blue-50: #f1f4fd;
+  --color-cerulean-blue-100: #e0e6f9;
+  --color-cerulean-blue-200: #c9d4f4;
+  --color-cerulean-blue-300: #a3b8ed;
+  --color-cerulean-blue-400: #7892e2;
+  --color-cerulean-blue-500: #5870d9;
+  --color-cerulean-blue-600: #3b4cca;
+  --color-cerulean-blue-700: #3a43bb;
+  --color-cerulean-blue-800: #343899;
+  --color-cerulean-blue-900: #2f3479;
+  --color-cerulean-blue-950: #20224b;
+
+  --color-candlelight-50: #feffe7;
+  --color-candlelight-100: #fcffc1;
+  --color-candlelight-200: #fdff86;
+  --color-candlelight-300: #fffa41;
+  --color-candlelight-400: #ffed0d;
+  --color-candlelight-500: #ffde00;
+  --color-candlelight-600: #d1a400;
+  --color-candlelight-700: #a67602;
+  --color-candlelight-800: #895b0a;
+  --color-candlelight-900: #744b0f;
+  --color-candlelight-950: #442704;
+
+  --color-lucky-50: #fafbeb;
+  --color-lucky-100: #f1f5cc;
+  --color-lucky-200: #e6ec9c;
+  --color-lucky-300: #dce064;
+  --color-lucky-400: #d6d539;
+  --color-lucky-500: #c6bf2c;
+  --color-lucky-600: #b3a125;
+  --color-lucky-700: #89731f;
+  --color-lucky-800: #725c21;
+  --color-lucky-900: #624d21;
+  --color-lucky-950: #39290f;
+
+  --container-center: true;
+  --container-padding: 15px;
+
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 992px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1200px;
+
+  --font-montserrat: 'Montserrat', Arial, sans-serif;
+
+  --animate-slide-in: slideIn 2s ease-in infinite alternate;
+
+  @keyframes slideIn {
+    0% {
+      margin-top: 0px;
+    }
+    100% {
+      margin-top: -50px;
+    }
+  }
+}
+
+@media (min-width: 480px) {
+  :root {
+    --container-max-width: 480px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-max-width: 768px;
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --container-max-width: 992px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --container-max-width: 1024px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --container-max-width: 1200px;
+  }
+}
+
+@layer utilities {
+  .container {
+     @apply mx-auto px-4 xs:max-w-[480px] sm:max-w-[768px] md:max-w-[992px] lg:max-w-[1024px] xl:max-w-[1200px];
+  }
+}
+
+:root {
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.type-icon::before{
+  @apply block content-[''] size-7 bg-no-repeat bg-center bg-contain;
+}
+
+.type-icon.bug::before{
+  background-image: url('assets/icons/bug.svg');
+}
+
+.type-icon.dark::before{
+  background-image: url('assets/icons/dark.svg');
+}
+
+.type-icon.dragon::before{
+  background-image: url('assets/icons/dragon.svg');
+}
+
+.type-icon.eletric::before{
+  background-image: url('assets/icons/eletric.svg');
+}
+
+.type-icon.fairy::before{
+  background-image: url('assets/icons/fairy.svg');
+}
+
+.type-icon.fighting::before{
+  background-image: url('assets/icons/fighting.svg');
+}
+
+.type-icon.fire::before{
+  background-image: url('assets/icons/fire.svg');
+}
+
+.type-icon.flying::before{
+  background-image: url('assets/icons/flying.svg');
+}
+
+.type-icon.ghost::before{
+  background-image: url('assets/icons/ghost.svg');
+}
+
+.type-icon.grass::before{
+  background-image: url('assets/icons/grass.svg');
+}
+
+.type-icon.ground::before{
+  background-image: url('assets/icons/ground.svg');
+}
+
+.type-icon.ice::before{
+  background-image: url('assets/icons/ice.svg');
+}
+
+.type-icon.normal::before{
+  background-image: url('assets/icons/normal.svg');
+}
+
+.type-icon.poison::before{
+  background-image: url('assets/icons/poison.svg');
+}
+
+.type-icon.psychic::before{
+  background-image: url('assets/icons/psychic.svg');
+}
+
+.type-icon.rock::before{
+  background-image: url('assets/icons/rock.svg');
+}
+
+.type-icon.steel::before{
+  background-image: url('assets/icons/steel.svg');
+}
+
+.type-icon.water::before{
+  background-image: url('assets/icons/water.svg');
+}
