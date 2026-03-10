@@ -2,7 +2,7 @@ import api from "./api";
 
 export const searchPokemon = (search) => {
     try {
-        const response = api.get(`/${search.toLowerCase()}`);
+        const response = api.get(`/${search.toLowerCase()}?limit=1&offset=0`);
 
         return response;
 

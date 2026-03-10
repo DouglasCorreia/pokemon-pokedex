@@ -98,6 +98,12 @@
   }
 }
 
+@layer utilities {
+  .btn{
+    @apply flex items-center justify-center mx-auto mt-10 h-12 px-6 rounded-lg font-medium cursor-pointer shadow-xl transition-colors duration-300 bg-gray-400;
+  }
+}
+
 @media (min-width: 480px) {
   :root {
     --container-max-width: 480px;
@@ -207,6 +213,10 @@ body {
 
 .type-icon.ice::before{
   background-image: url('assets/icons/ice.svg');
+}
+
+.type-icon.electric::before{
+  background-image: url('assets/icons/electric.svg');
 }
 
 .type-icon.normal::before{
