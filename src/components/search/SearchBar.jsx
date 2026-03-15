@@ -3,15 +3,27 @@ function SearchBar ({setSearch, inputValue, setInputValue}) {
     setSearch(inputValue.trim());
   }
 
+  const handleChange = (event) => {
+    const value = event.target.value;
+
+    setInputValue(value);
+
+    const delay = setTimeout(() => {
+      setSearch(value);
+    }, 500)
+
+    return () => clearTimeout(delay)
+  }
+
   return(
     <>
       <div className="w-full sm:w-1/2 lg:w-1/3">
         <div className="flex justify-end w-full relative ml-auto">
           <input
             type="text"
-            placeholder="Pesquise por algum nome de pokémon"
+            placeholder="Busque pelo nome ou ID do pokémon..."
             className="w-full bg-white border border-solid border-red-600 rounded-[120px] px-4 py-3 text-gray-950 placeholder:text-gray-950 outline-none focus:border-red-600"
-            onChange={(event) => {setInputValue(event.target.value)}}
+            onChange={handleChange}
             value={inputValue}
             onKeyDown={(e) => {
               if (e.key === "Enter") handleSearch();

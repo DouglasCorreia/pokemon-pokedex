@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getPokemons } from "../services/pokemonsList";
 import { searchPokemon } from "../services/pokemonSearch";
 import PokemonSpot from './PokemonSpot';
 import SearchBar from "./search/SearchBar";
 import PokemonCount from "./PokemonCount";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import ButtonShowMore from "./buttons/ButtonShowMore";
 
 function PokemonList({ search, setSearch }) {
@@ -16,7 +16,6 @@ function PokemonList({ search, setSearch }) {
     const hasFetched = useRef(false);
     const limit = 24;
     
-    // Carregar lista inicial uma vez
     useEffect(() => {
         if (hasFetched.current) return;
 
@@ -25,7 +24,6 @@ function PokemonList({ search, setSearch }) {
         loadPokemons();
     }, []);
 
-    // Buscar pokémon quando search muda
     useEffect(() => {
         loadPokemons(true);
     }, [search]);
@@ -37,14 +35,12 @@ function PokemonList({ search, setSearch }) {
 
         try {
             if (search.length > 0) {
-                // Busca simples - sempre retorna 1 ou 0 resultados, sem paginação
                 const result = await searchPokemon(search);
 
                 setPokemons(result ? [result.data] : []);
                 setOffset(0);
                 setPokemonsCount(result ? 1 : 0);
             } else {
-                // Lista paginada
                 const currentOffset = reset ? 0 : (offsetParameter ? offsetParameter : offset);
                 const result = await getPokemons(limit, currentOffset);
 
@@ -92,9 +88,10 @@ function PokemonList({ search, setSearch }) {
                             <motion.li
                                 key={index}
                                 initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: (index % limit) * 0.05 }}
-                                className="col-span-6 sm:col-span-4 lg:col-span-3 bg-white rounded-lg"
+                                viewport={{ once: true, amount: 0.2 }}
+                                className="col-span-6 sm:col-span-4 lg:col-span-3 bg-white rounded-lg transition-transform duration-200 lg:hover:-translate-y-3"
                             >
                                 <PokemonSpot id={id} />
                             </motion.li>
@@ -120,7 +117,6 @@ function PokemonList({ search, setSearch }) {
                         onClick={() => {
                             setInputValue("");
                             setSearch("");
-                            loadPokemons(true);
                         }}
                         className="btn bg-red-600 hover:bg-red-700"
                     >

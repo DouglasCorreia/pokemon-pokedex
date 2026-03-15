@@ -24,7 +24,7 @@ function PokemonSpot({id}) {
 
   return(
     <>
-      <div className="pokemon-spot shadow-xl p-3 rounded-lg">
+      <div className="pokemon-spot shadow-lg p-3 rounded-lg">
         <Link
           to={`/pokemon/${pokemon.id}`}
         >
