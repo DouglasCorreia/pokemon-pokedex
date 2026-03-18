@@ -90,7 +90,7 @@ function PokemonList({ search, setSearch }) {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: (index % limit) * 0.05 }}
-                                viewport={{ once: true, amount: 0.2 }}
+                                viewport={{ once: true, amount: 0.1 }}
                                 className="col-span-6 sm:col-span-4 lg:col-span-3 bg-white rounded-lg transition-transform duration-200 lg:hover:-translate-y-3"
                             >
                                 <PokemonSpot id={id} />
