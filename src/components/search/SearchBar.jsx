@@ -12,7 +12,7 @@ function SearchBar ({setSearch, inputValue, setInputValue}) {
       setSearch(value);
     }, 500)
 
-    return () => clearTimeout(delay)
+    return () => clearTimeout(delay);
   }
 
   return(

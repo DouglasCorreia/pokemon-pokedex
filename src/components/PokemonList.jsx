@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getPokemons } from "../services/pokemonsList";
 import { searchPokemon } from "../services/pokemonSearch";
-import PokemonSpot from './PokemonSpot';
+import PokemonSpot from './spots/PokemonSpot';
 import SearchBar from "./search/SearchBar";
 import PokemonCount from "./PokemonCount";
 import { motion } from "framer-motion";
