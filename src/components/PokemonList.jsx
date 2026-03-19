@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { getPokemons } from "../services/pokemonsList";
-import { searchPokemon } from "../services/pokemonSearch";
+import { getAllPokemons } from "../services/pokemonAll";
 import PokemonSpot from './spots/PokemonSpot';
 import SearchBar from "./search/SearchBar";
 import PokemonCount from "./PokemonCount";
@@ -9,7 +9,8 @@ import ButtonShowMore from "./buttons/ButtonShowMore";
 
 function PokemonList({ search, setSearch }) {
     const [pokemons, setPokemons] = useState([]);
-    const [pokemonsCount, setPokemonsCount] = useState([]);
+    const [allPokemons, setAllPokemons] = useState([]);
+    const [pokemonsCount, setPokemonsCount] = useState(0);
     const [inputValue, setInputValue] = useState("");
     const [offset, setOffset] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -22,24 +23,46 @@ function PokemonList({ search, setSearch }) {
         hasFetched.current = true;
 
         loadPokemons();
+        loadAllPokemons();
     }, []);
 
     useEffect(() => {
         loadPokemons(true);
     }, [search]);
 
+    const filteredPokemons = useMemo(() => {
+        if (search.length === 0) return [];
+
+        return allPokemons.filter(pokemon =>
+            pokemon.name.toLowerCase().includes(search.toLowerCase())
+        );
+    }, [search, allPokemons]);
+
+    const loadAllPokemons = async () => {
+        try {
+            const response = await getAllPokemons();
+
+            setAllPokemons(response.data.results);
+
+        } catch (error) {
+            console.error("Erro na busca, carregando lista completa:", error);
+        }
+    }
+
     const loadPokemons = async (reset = false, offsetParameter) => {
-        if (loading) return;
+        if (loading && search.length === 0) return;
 
         setLoading(true);
 
         try {
             if (search.length > 0) {
-                const result = await searchPokemon(search);
+                if (allPokemons.length === 0) return;
 
-                setPokemons(result ? [result.data] : []);
+                const filtered = filteredPokemons;
+
+                setPokemons(filtered.slice(0, limit));
                 setOffset(0);
-                setPokemonsCount(result ? 1 : 0);
+                setPokemonsCount(filtered.length);
             } else {
                 const currentOffset = reset ? 0 : (offsetParameter ? offsetParameter : offset);
                 const result = await getPokemons(limit, currentOffset);
