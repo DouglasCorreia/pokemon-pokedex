@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import PokemonDetailSubtitleSection from "../components/details/PokemonDetailSubtitleSection";
 import PokemonDetailSwiper from "../components/details/PokemonDetailSwiper";
+import PokemonDetailStatus from "../components/details/PokemonDetailStatus";
 
 function PokemonDetail () {
     const [pokemon, setPokemon] = useState([]);
@@ -52,7 +53,7 @@ function PokemonDetail () {
                                         : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png` }
                                     alt={`Imagem do pokémon ${pokemon.name}`}
                                     fetchPriority='high' 
-                                    className='w-full h-auto mx-auto max-w-75 mt-10'
+                                    className='w-full h-auto mx-auto max-w-75 max-h-96 mt-10'
                                     width='300'
                                     height='289'
                                 />
@@ -63,11 +64,50 @@ function PokemonDetail () {
 
                 <div className="bg-white py-10">
                     <div className="container">
-                        <PokemonDetailType
-                            types={ pokemon.types }
-                        />
+                        <div className="grid grid-cols-2 gap-8">
+                            <div className="col-span-2 lg:col-span-1">
+                                <PokemonDetailSubtitleSection
+                                    title="Status"
+                                />
 
-                        <div className="grid grid-cols-2">
+                                <div className="flex flex-col gap-4">
+                                    <PokemonDetailStatus
+                                        stats={pokemon.stats}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="col-span-2 lg:col-span-1 flex flex-col gap-4">
+                                <div>
+                                    <PokemonDetailSubtitleSection
+                                        title="Tipo"
+                                    />
+
+                                    <PokemonDetailType
+                                        types={ pokemon.types }
+                                    />
+                                </div>
+
+                                <div>
+                                    <PokemonDetailSubtitleSection
+                                        title="Altura"
+                                    />
+
+                                    <p className="block leading-none text-gray-800 font-medium">{ pokemon.height / 10 } M</p>
+                                </div>
+
+                                <div>
+                                    <PokemonDetailSubtitleSection
+                                        title="Peso"
+                                    />
+
+                                    <p className="block leading-none text-gray-800 font-medium">{ pokemon.weight / 10 } KG</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div className="grid grid-cols-2 gap-8 mt-8">
                             <div className="col-span-2 lg:col-span-1">
                                 <PokemonDetailSubtitleSection
                                     title="Sprites do pokémon"
@@ -82,7 +122,7 @@ function PokemonDetail () {
                                 />
                             </div>
 
-                            <div className="col-span-2 lg:col-span-1 mt-8 lg:mt-0">
+                            <div className="col-span-2 lg:col-span-1">
                                 <PokemonDetailSubtitleSection
                                     title="Sprites do pokémon em modo shiny"
                                 />
