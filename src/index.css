@@ -404,75 +404,75 @@ body {
 }
 
 .background-type-bug {
-  background-color:#729f3f;
+  @apply bg-bug-300 text-bug-600;
 }
 
 .background-type-dark {
-  background-color:#707070;
+  @apply bg-dark-300 text-dark-600;
 }
 
 .background-type-dragon {
-  background-color:#53a4cf;
+  @apply bg-dragon-300 text-dragon-600;
 }
 
 .background-type-electric {
-  background-color:#eed535;
+  @apply bg-eletric-300 text-eletric-600;
 }
 
 .background-type-fairy {
-  background-color:#fdb9e9;
+  @apply bg-fairy-300 text-fairy-600;
 }
 
 .background-type-fighting {
-  background-color:#d56723;
+  @apply bg-fighting-300 text-fighting-600;
 }
 
 .background-type-fire {
-  background-color:#fd7d24;
+  @apply bg-fire-300 text-fire-600;
 }
 
 .background-type-flying {
-  background-color:#3dc7ef;
+  @apply bg-flying-300 text-flying-600;
 }
 
 .background-type-ghost {
-  background-color:#7b62a3;
+  @apply bg-ghost-300 text-ghost-600;
 }
 
 .background-type-grass {
-  background-color:#9bcc50;
+  @apply bg-grass-300 text-grass-600;
 }
 
 .background-type-ground {
-  background-color:#f7de3f;
+  @apply bg-ground-300 text-ground-600;
 }
 
 .background-type-ice {
-  background-color:#51c4e7;
+  @apply bg-ice-300 text-ice-600;
 }
 
 .background-type-normal {
-  background-color:#a4acaf;
+  @apply bg-normal-300 text-normal-600;
 }
 
 .background-type-poison {
-  background-color:#b97fc9;
+  @apply bg-poison-300 text-poison-600;
 }
 
 .background-type-psychic {
-  background-color:#f366b9;
+  @apply bg-psychic-300 text-psychic-600;
 }
 
 .background-type-rock {
-  background-color:#a38c21;
+  @apply bg-rock-300 text-rock-600;
 }
 
 .background-type-steel {
-  background-color:#9eb7b8;
+  @apply bg-steel-300 text-steel-600;
 }
 
 .background-type-water {
-  background-color:#4592c4;
+  @apply bg-water-300 text-water-600;
 }
 
 .page-pokemon-detail .swiper-button-prev,
